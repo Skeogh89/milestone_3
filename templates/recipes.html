@@ -1,32 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-   
-
-    {% for recipe in recipes %}
-        {{recipe.recipes_name}}<br>
-        {{recipe.description}}<br>
-        {{recipe.ingredients}}<br>
-        {{recipe.directions}}<br>
-        {{recipe.yields}}<br>
-        {{recipe.prep_time}}<br>
-        {{recipe.total_time}}<br>
-    {% endfor %}
-
     
-<ul class="collapsible">
-    <li>
-        <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>Second</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>Third</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-</ul>
+    <ul class="collapsible">
+        {% for recipe in recipes %}   
+        <li>
+            <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>
+                <strong>{{recipe.recipes_name}}</strong> : {{recipe.total_time}}
+                {% if recipe.meat == "yes" %}
+                    <i class="fas fa-drumstick-bite tooltipped"
+                    data-position="right" data-tooltip="Contains Meat!"></i>
+                {% endif %}
+                {% if recipe.vegan == "yes" %}
+                    <i class="fas fa-leaf tooltipped"
+                    data-position="right" data-tooltip="Vegan!"></i>
+                {% endif %}
+                {% if recipe.vegatarian == "yes" %}
+                    <i class="fas fa-carrot tooltipped"
+                    data-position="right" data-tooltip="Vegatarian!"></i>
+                {% endif %}
+                {% if recipe.allergens == "yes" %}
+                    <i class="fas fa-allergies tooltipped"
+                    data-position="right" data-tooltip="Allergens"></i>
+                {% endif %}
+            </div>
+            <div class="collapsible-body">
+                <p>{{recipe.description}}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    
 
 {% endblock %}
