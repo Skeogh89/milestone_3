@@ -84,6 +84,7 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+
 @app.route("/logout")
 def logout():
     flash("You have been logged out")
@@ -93,7 +94,9 @@ def logout():
 
 @app.route("/add_recipe")
 def add_recipe():
-    return render_template("add_recipes.html")
+    cuisines = mongo.db.cuisine.find().sort('cuisne_name', 1)
+    return render_template("add_recipes.html", cuisines=cuisines)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
