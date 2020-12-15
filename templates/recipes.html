@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h3 class="light-blue-text text-lighten-1 center-align">All Recipes</h3>
+
     
     <ul class="collapsible">
         {% for recipe in recipes %}   
         <li>
             <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>
-                <strong>{{recipe.recipes_name}}</strong> : {{recipe.total_time}}
-                {% if recipe.meat == "yes" %}
+                <strong>{{recipe.recipe_name}}</strong> : {{recipe.total_time}}
+                {% if recipe.meat == "on" %}
                     <i class="fas fa-drumstick-bite tooltipped"
                     data-position="right" data-tooltip="Contains Meat!"></i>
                 {% endif %}
-                {% if recipe.vegan == "yes" %}
+                {% if recipe.vegan == "on" %}
                     <i class="fas fa-leaf tooltipped"
                     data-position="right" data-tooltip="Vegan!"></i>
                 {% endif %}
-                {% if recipe.vegatarian == "yes" %}
+                {% if recipe.vegatarian == "on" %}
                     <i class="fas fa-carrot tooltipped"
                     data-position="right" data-tooltip="Vegatarian!"></i>
                 {% endif %}
-                {% if recipe.allergens == "yes" %}
+                {% if recipe.allergens == "on" %}
                     <i class="fas fa-allergies tooltipped"
                     data-position="right" data-tooltip="Allergens"></i>
                 {% endif %}
             </div>
             <div class="collapsible-body">
                 <p>{{recipe.description}}</p>
+                <p><em>by: {{ recipe.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}

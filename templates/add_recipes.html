@@ -3,7 +3,7 @@
 <h3 class="light-blue-text text-lighten-1 center-align">Add New Recipe</h3>
 
 <div class="row card-panel grey lighten-5">
-    <form class="col s12" method="POST" action="">
+    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-globe-europe light-blue-text text-lighten-1 prefix"></i>
@@ -62,6 +62,61 @@
 
             </div>
         </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-clipboard-list light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="ingredients" name="ingredients" minlength="5"
+                maxlength="1000" class="materialize-textarea" required></textarea>
+                <label for="ingredients">Recipe Ingredients</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-list-ol light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="directions" name="directions" minlength="5"
+                maxlength="5000" class="materialize-textarea" required></textarea>
+                <label for="directions">Recipe Directions</label>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s4">
+                <i class="far fa-clock light-blue-text text-lighten-1 prefix"></i>
+                <select id="prep_time" name="prep_time" class="validate" required>
+                    <option value="" disabled selected>Choose Prep Time </option>
+                    {% for prep_time in prep_times %}
+                        <option value="{{ prep_time.prep_time }}">{{ prep_time.prep_time }}</option>
+                    {% endfor %}
+                </select>
+                <label for="prep_time">Choose Prep Time</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="far fa-clock light-blue-text text-lighten-1 prefix"></i>
+                <select id="total_time" name="total_time" class="validate" required>
+                    <option value="" disabled selected>Choose Total Time </option>
+                    {% for total_time in total_times %}
+                        <option value="{{ total_time.total_time }}">{{ total_time.total_time }}</option>
+                    {% endfor %}
+                </select>
+                <label for="total_time">Choose Total Time</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="fas fa-calculator light-blue-text text-lighten-1 prefix"></i>
+                <select id="yields" name="yields" class="validate" required>
+                    <option value="" disabled selected>Choose Yeild </option>
+                    {% for yeild in yeilds %}
+                        <option value="{{ yeild.yeild }}">{{ yeild.yeild }}</option>
+                    {% endfor %}
+                </select>
+                <label for="yeilds">Choose Yeild</label>
+            </div>
+            
+        <div class="row">
+            <div class="col s12 center-align">
+                <button class="btn-large light-blue text-lighten-1 text-shadow" type="submit">Add Recipe
+                <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>  
     </form>
 </div>
 
