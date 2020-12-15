@@ -18,6 +18,8 @@ ISSUE
 
 Yeilds values not loading from dropdown list. 
 
+Edit recipes page getting a 404 error - looks like object id in mongoDB is not getting injected into URL. 
+
 Resources: 
 
 https://stackoverflow.com/questions/12096522/render-template-with-multiple-variables   -- answer to "yield" issue found here in comments
