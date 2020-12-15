@@ -126,12 +126,35 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        meat = "on" if request.form.get("meat") else "off"
+        vegan = "on" if request.form.get("vegan") else "off"
+        vegetarian = "on" if request.form.get("vegetarian") else "off"
+        allergens = "on" if request.form.get("allergens") else "off"
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "cuisine_name": request.form.get("cuisine_name"),
+            "description": request.form.get("description"),
+            "meat": meat,
+            "vegan": vegan,
+            "vegetarian": vegetarian,
+            "allergens": allergens,
+            "created_by": session["user"],
+            "directions": request.form.get("directions"),
+            "ingredients": request.form.get("ingredients"),
+            "prep_time": request.form.get("prep_time"),
+            "total_time": request.form.get("total_time"),
+            "yields": request.form.get("yields")
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, recipe)
+        flash("Recipe Succesfully Updated")
+
     recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     prep_times = mongo.db.prep_time.find().sort('prep_time', 1)
     yields = mongo.db.yields.find()
     total_times = mongo.db.total_time.find({})
     cuisines = mongo.db.cuisine.find().sort('cuisne_name', 1)
-    return render_template("edit_recipe.html", recipes=recipes, cuisines=cuisines, prep_times=prep_times, total_times=total_times, yeilds=yields )
+    return render_template("edit_recipe.html", recipes=recipes, cuisines=cuisines, prep_times=prep_times, total_times=total_times, yeilds=yields)
 
 
 if __name__ == "__main__":
