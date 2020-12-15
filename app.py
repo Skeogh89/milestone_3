@@ -124,6 +124,16 @@ def add_recipe():
     return render_template("add_recipes.html", cuisines=cuisines, prep_times=prep_times, total_times=total_times, yeilds=yields)
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    prep_times = mongo.db.prep_time.find().sort('prep_time', 1)
+    yields = mongo.db.yields.find()
+    total_times = mongo.db.total_time.find({})
+    cuisines = mongo.db.cuisine.find().sort('cuisne_name', 1)
+    return render_template("edit_recipe.html", cuisines=cuisines, prep_times=prep_times, total_times=total_times, yeilds=yields, recipe=recipe)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

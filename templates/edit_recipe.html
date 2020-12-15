@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block content%}
+<h3 class="light-blue-text text-lighten-1 center-align">Edit Recipe</h3>
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id._id) }}">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-globe-europe light-blue-text text-lighten-1 prefix"></i>
+                <select id="cuisine_name" name="cuisne_name" class="validate" required>
+                    <option value="" disabled selected>Choose Cuisne </option>
+                    {% for cuisine in cuisines %}
+                        <option value="{{ cuisine.cuisine_name }}">{{ cuisine.cuisine_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="cuisine_name">Choose Cusine</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fas fa-utensils light-blue-text text-lighten-1 prefix"></i>
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" required>
+                <label for="recipe_name">Recipe Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="description" name="description" minlength="5"
+                maxlength="200" class="materialize-textarea" required></textarea>
+                <label for="description">Recipe Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="fas fa-drumstick-bite light-blue-text text-lighten-1 prefix"></i>
+                    <label for="meat">
+                        <input type="checkbox" id="meat" name="meat">
+                        <span class="lever"></span>
+                        Contains Meat
+                    </label>
+                    <i class="fas fas fa-leaf light-blue-text text-lighten-1 prefix"></i>
+                    <label for="vegan">
+                        <input type="checkbox" id="vegan" name="vegan">
+                        <span class="lever"></span>
+                        Vegan Friendly
+                    </label>
+                    <i class="fas fas fa-carrot light-blue-text text-lighten-1 prefix"></i>
+                    <label for="vegetarian">
+                        <input type="checkbox" id="vegetarian" name="vegetarian">
+                        <span class="lever"></span>
+                        Vegetarian Friendly
+                    </label>
+                    <i class="fas fas fa-allergies light-blue-text text-lighten-1 prefix"></i>
+                    <label for="allergens">
+                        <input type="checkbox" id="allergens" name="allergens">
+                        <span class="lever"></span>
+                        Allergens
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-clipboard-list light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="ingredients" name="ingredients" minlength="5"
+                maxlength="1000" class="materialize-textarea" required></textarea>
+                <label for="ingredients">Recipe Ingredients</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-list-ol light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="directions" name="directions" minlength="5"
+                maxlength="5000" class="materialize-textarea" required></textarea>
+                <label for="directions">Recipe Directions</label>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s4">
+                <i class="far fa-clock light-blue-text text-lighten-1 prefix"></i>
+                <select id="prep_time" name="prep_time" class="validate" required>
+                    <option value="" disabled selected>Choose Prep Time </option>
+                    {% for prep_time in prep_times %}
+                        <option value="{{ prep_time.prep_time }}">{{ prep_time.prep_time }}</option>
+                    {% endfor %}
+                </select>
+                <label for="prep_time">Choose Prep Time</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="far fa-clock light-blue-text text-lighten-1 prefix"></i>
+                <select id="total_time" name="total_time" class="validate" required>
+                    <option value="" disabled selected>Choose Total Time </option>
+                    {% for total_time in total_times %}
+                        <option value="{{ total_time.total_time }}">{{ total_time.total_time }}</option>
+                    {% endfor %}
+                </select>
+                <label for="total_time">Choose Total Time</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="fas fa-calculator light-blue-text text-lighten-1 prefix"></i>
+                <select id="yields" name="yields" class="validate" required>
+                    <option value="" disabled selected>Choose Yeild </option>
+                    {% for yeild in yeilds %}
+                        <option value="{{ yeild.yeild }}">{{ yeild.yeild }}</option>
+                    {% endfor %}
+                </select>
+                <label for="yeilds">Choose Yeild</label>
+            </div>
+            
+        <div class="row">
+            <div class="col s12 center-align">
+                <button class="btn-large light-blue text-lighten-1 text-shadow" type="submit">Edit Recipe
+                <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>  
+    </form>
+</div>
+
+{% endblock %}
