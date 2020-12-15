@@ -2,30 +2,35 @@
 {% block content %}
 
     <h3 class="light-blue-text text-lighten-1 center-align">All Recipes</h3>
-
+    
     
     <ul class="collapsible">
-        {% for recipe in recipes %}   
+        {% for recipe in recipes %}
         <li>
-            <div class="collapsible-header white-text light-blue lighten-1 text-shawdow"><i class="fas fa-caret-down"></i>
-                <strong>{{recipe.recipe_name}}</strong> : {{recipe.total_time}}
-                {% if recipe.meat == "on" %}
-                    <i class="fas fa-drumstick-bite tooltipped"
-                    data-position="right" data-tooltip="Contains Meat!"></i>
-                {% endif %}
-                {% if recipe.vegan == "on" %}
-                    <i class="fas fa-leaf tooltipped"
-                    data-position="right" data-tooltip="Vegan!"></i>
-                {% endif %}
-                {% if recipe.vegatarian == "on" %}
-                    <i class="fas fa-carrot tooltipped"
-                    data-position="right" data-tooltip="Vegatarian!"></i>
-                {% endif %}
-                {% if recipe.allergens == "on" %}
-                    <i class="fas fa-allergies tooltipped"
-                    data-position="right" data-tooltip="Allergens"></i>
-                {% endif %}
+            <div class="collapsible-header white-text light-blue lighten-1 text-shawdow">
+                <div class="col s3">
+                    <i class="fas fa-caret-down"></i>
+                    <a href="" class="btn-small green accent-4">Done</a>
+                    <a href="" class="btn-small light-blue accent-4">Edit</a>
+                </div>
+                <div class="col s9">
+                    <strong>{{recipe.recipe_name}}</strong> : {{recipe.total_time}}
+                    {% if recipe.meat == "on" %}
+                    <i class="fas fa-drumstick-bite tooltipped" data-position="right" data-tooltip="Contains Meat!"></i>
+                    {% endif %}
+                    {% if recipe.vegan == "on" %}
+                    <i class="fas fa-leaf tooltipped" data-position="right" data-tooltip="Vegan!"></i>
+                    {% endif %}
+                    {% if recipe.vegatarian == "on" %}
+                    <i class="fas fa-carrot tooltipped" data-position="right" data-tooltip="Vegatarian!"></i>
+                    {% endif %}
+                    {% if recipe.allergens == "on" %}
+                    <i class="fas fa-allergies tooltipped" data-position="right" data-tooltip="Allergens"></i>
+                    {% endif %}
+                </div>
+    
             </div>
+    
             <div class="collapsible-body">
                 <p>{{recipe.description}}</p>
                 <p><em>by: {{ recipe.created_by }}</em></p>
