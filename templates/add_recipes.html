@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content%}
+<h3 class="light-blue-text text-lighten-1 center-align">Add New Recipe</h3>
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fas fa-utensils light-blue-text text-lighten-1 prefix"></i>
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" required>
+                <label for="recipe_name">Recipe Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt light-blue-text text-lighten-1 prefix"></i>
+                <textarea id="description" name="description" minlength="5"
+                maxlength="200" class="materialize-textarea" required></textarea>
+                <label for="description">Recipe Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="fas fa-drumstick-bite light-blue-text text-lighten-1 prefix"></i>
+                    <label for="meat">
+                        <input type="checkbox" id="meat" name="meat">
+                        <span class="lever"></span>
+                        Contains Meat
+                    </label>
+                    <i class="fas fas fa-leaf light-blue-text text-lighten-1 prefix"></i>
+                    <label for="vegan">
+                        <input type="checkbox" id="vegan" name="vegan">
+                        <span class="lever"></span>
+                        Vegan Friendly
+                    </label>
+                    <i class="fas fas fa-carrot light-blue-text text-lighten-1 prefix"></i>
+                    <label for="vegetarian">
+                        <input type="checkbox" id="vegetarian" name="vegetarian">
+                        <span class="lever"></span>
+                        Vegetarian Friendly
+                    </label>
+                    <i class="fas fas fa-allergies light-blue-text text-lighten-1 prefix"></i>
+                    <label for="allergens">
+                        <input type="checkbox" id="allergens" name="allergens">
+                        <span class="lever"></span>
+                        Allergens
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
