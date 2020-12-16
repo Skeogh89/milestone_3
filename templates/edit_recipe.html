@@ -10,11 +10,11 @@
                 <select id="cuisine_name" name="cuisne_name" class="validate" required>
                     <option value="" disabled>Choose Cuisne </option>
                     {% for cuisine in cuisines %}
-                        {% if cuisine.cuisine_name == recipes.cuisne_name %}
-                            <option value="{{ cuisine.cuisine_name }}" selected>{{ cuisine.cuisine_name }}</option>
-                        {% else %}
-                            <option value="{{ cuisine.cuisine_name }}">{{ cuisine.cuisine_name }}</option>
-                        {% endif %}
+                    {% if cuisine.cuisine_name == recipes.cuisne_name %}
+                         <option value="{{ cuisine.cuisine_name }}" selected>{{ cuisine.cuisine_name }}</option>
+                    {% else %}
+                        <option value="{{ cuisine.cuisine_name }}">{{ cuisine.cuisine_name }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="cuisine_name">Choose Cusine</label>
@@ -23,15 +23,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fas fa-utensils light-blue-text text-lighten-1 prefix"></i>
-                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" value="{{ recipes.recipe_name }}" required>
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
+                    value="{{ recipes.recipe_name }}" required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt light-blue-text text-lighten-1 prefix"></i>
-                <textarea id="description" name="description" minlength="5"
-                maxlength="200" class="materialize-textarea" required>{{- recipes.description -}}</textarea>
+                <textarea id="description" name="description" minlength="5" maxlength="200" class="materialize-textarea"
+                    required>{{- recipes.description -}}</textarea>
                 <label for="description">Recipe Description</label>
             </div>
         </div>
@@ -41,41 +42,41 @@
                     <i class="fas fa-drumstick-bite light-blue-text text-lighten-1 prefix"></i>
                     <label for="meat">
                         {% if recipes.meat == "on" %}
-                        <input type="checkbox" id="meat" name="meat" checked>
+                             <input type="checkbox" id="meat" name="meat" checked>
                         {% else %}
-                        <input type="checkbox" id="meat" name="meat">
+                             <input type="checkbox" id="meat" name="meat">
                         {% endif %}
-                        <span class="lever"></span>
+                             <span class="lever"></span>
                         Contains Meat
                     </label>
                     <i class="fas fas fa-leaf light-blue-text text-lighten-1 prefix"></i>
                     <label for="vegan">
                         {% if recipes.vegan == "on" %}
-                        <input type="checkbox" id="vegan" name="vegan" checked>
+                             <input type="checkbox" id="vegan" name="vegan" checked>
                         {% else %}
-                        <input type="checkbox" id="vegan" name="vegan">
+                            <input type="checkbox" id="vegan" name="vegan">
                         {% endif %}
-                        <span class="lever"></span>
+                            <span class="lever"></span>
                         Vegan Friendly
                     </label>
                     <i class="fas fas fa-carrot light-blue-text text-lighten-1 prefix"></i>
                     <label for="vegetarian">
                         {% if recipes.vegetarian == "on" %}
-                        <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+                            <input type="checkbox" id="vegetarian" name="vegetarian" checked>
                         {% else %}
-                        <input type="checkbox" id="vegetarian" name="vegetarian">
+                            <input type="checkbox" id="vegetarian" name="vegetarian">
                         {% endif %}
-                        <span class="lever"></span>
+                            <span class="lever"></span>
                         Vegetarian Friendly
                     </label>
                     <i class="fas fas fa-allergies light-blue-text text-lighten-1 prefix"></i>
                     <label for="allergens">
                         {% if recipes.allergens == "on" %}
-                        <input type="checkbox" id="allergens" name="allergens" checked>
+                             <input type="checkbox" id="allergens" name="allergens" checked>
                         {% else %}
-                        <input type="checkbox" id="allergens" name="allergens">
+                            <input type="checkbox" id="allergens" name="allergens">
                         {% endif %}
-                        <span class="lever"></span>
+                            <span class="lever"></span>
                         Allergens
                     </label>
                 </div>
@@ -85,30 +86,30 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-clipboard-list light-blue-text text-lighten-1 prefix"></i>
-                <textarea id="ingredients" name="ingredients" minlength="5"
-                maxlength="1000" class="materialize-textarea" required>{{- recipes.ingredients -}}</textarea>
+                <textarea id="ingredients" name="ingredients" minlength="5" maxlength="1000"
+                    class="materialize-textarea" required>{{- recipes.ingredients -}}</textarea>
                 <label for="ingredients">Recipe Ingredients</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-list-ol light-blue-text text-lighten-1 prefix"></i>
-                <textarea id="directions" name="directions" minlength="5"
-                maxlength="5000" class="materialize-textarea" required>{{- recipes.directions -}}</textarea>
+                <textarea id="directions" name="directions" minlength="5" maxlength="5000" class="materialize-textarea"
+                    required>{{- recipes.directions -}}</textarea>
                 <label for="directions">Recipe Directions</label>
             </div>
         </div>
-         <div class="row">
+        <div class="row">
             <div class="input-field col s4">
                 <i class="far fa-clock light-blue-text text-lighten-1 prefix"></i>
                 <select id="prep_time" name="prep_time" class="validate" required>
                     <option value="" disabled selected>Choose Prep Time </option>
                     {% for prep_time in prep_times %}
-                        {% if prep_time.prep_time == recipes.prep_time %}
-                            <option value="{{ prep_time.prep_time }}" selected>{{ prep_time.prep_time }}</option>
-                        {% else %}
-                            <option value="{{ prep_time.prep_time }}">{{ prep_time.prep_time }}</option>
-                        {% endif %}
+                    {% if prep_time.prep_time == recipes.prep_time %}
+                    <option value="{{ prep_time.prep_time }}" selected>{{ prep_time.prep_time }}</option>
+                    {% else %}
+                    <option value="{{ prep_time.prep_time }}">{{ prep_time.prep_time }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="prep_time">Choose Prep Time</label>
@@ -118,11 +119,11 @@
                 <select id="total_time" name="total_time" class="validate" required>
                     <option value="" disabled selected>Choose Total Time </option>
                     {% for total_time in total_times %}
-                        {% if total_time.total_time == recipes.total_time %}
-                            <option value="{{ total_time.total_time }}" selected>{{ total_time.total_time }}</option>
-                        {% else %}
-                            <option value="{{ total_time.total_time }}">{{ total_time.total_time }}</option>
-                        {% endif %}
+                    {% if total_time.total_time == recipes.total_time %}
+                    <option value="{{ total_time.total_time }}" selected>{{ total_time.total_time }}</option>
+                    {% else %}
+                    <option value="{{ total_time.total_time }}">{{ total_time.total_time }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="total_time">Choose Total Time</label>
@@ -132,26 +133,27 @@
                 <select id="yields" name="yields" class="validate" required>
                     <option value="" disabled selected>Choose Yeild </option>
                     {% for yeild in yeilds %}
-                        {% if yeild.yeild == recipes.yeilds %}
-                            <option value="{{ yeild.yeild }}" selected>{{ yeild.yeild }}</option>   
-                        {% else %}
-                            <option value="{{ yeild.yeild }}" selected>{{ yeild.yeild }}</option>
-                        {% endif %}
+                    {% if yeild.yeild == recipes.yeilds %}
+                    <option value="{{ yeild.yeild }}" selected>{{ yeild.yeild }}</option>
+                    {% else %}
+                    <option value="{{ yeild.yeild }}" selected>{{ yeild.yeild }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="yeilds">Choose Yeild</label>
             </div>
-            
-        <div class="row">
-            <div class="col s12 center-align">
-                <a href="{{ url_for('get_recipes')}}" class="btn-large red text-shadow">
-                    Cancel <i class="fas fa-times-circle right"></i>
-                </a>
-                <button class="btn-large light-blue text-lighten-1 text-shadow" type="submit">Edit Recipe
-                <i class="fas fa-edit right"></i>
-                </button>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('get_recipes')}}" class="btn-large red text-shadow">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
+                    <button class="btn-large light-blue text-lighten-1 text-shadow" type="submit">Edit Recipe
+                        <i class="fas fa-edit right"></i>
+                    </button>
+                </div>
             </div>
-        </div>  
+        </div>
     </form>
 </div>
 
